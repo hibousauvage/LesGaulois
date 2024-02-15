@@ -19,15 +19,20 @@ public class Gaulois {
 	}
 	
 	public void parler(String texte) {
-		System.out.println(prendreParole() + "«" + texte + "»");
+		System.out.println(prendreParole() + "\" " + texte + " \"");
 	}
 	private String prendreParole() {
 		return "Le gaulois " + this.nom + " : ";
 	}
 	
 	public void frapper(Romain romain) {
-		System.out.println(this.nom + " envoie un grand coup dans la mâchoire de " + romain.getNom());
-		romain.recevoirCoup(force/3);
+		System.out.println(this.nom + " envoie un grand coup dans la mÃ¢choire de " + romain.getNom());
+		romain.recevoirCoup((this.force / 3) * this.effetPotion);
+	}
+	public void boirePotion(int forcePotion) {
+		this.effetPotion = forcePotion;
+		this.parler("Merci druide, je sens que ma force est " + this.effetPotion + " fois decuple.");
+		
 	}
 
 	@Override
@@ -37,8 +42,19 @@ public class Gaulois {
 
 	public static void main(String[] args) {
 		System.out.println("executer");
-		Gaulois asterix = new Gaulois("asterix",20);
-		System.out.println(asterix.toString());
-	}
+		Gaulois asterix = new Gaulois("Asterix",9);
+		System.out.println(asterix);
+		System.out.println(asterix.getNom());
+		System.out.println(asterix.prendreParole());
+		asterix.parler("mon chibre est enorme !!");
+		Romain plexus = new Romain("Plexus",5);
+		asterix.frapper(plexus);
+		asterix.frapper(plexus);
+		asterix.frapper(plexus);
+		Romain cactus = new Romain("Cactus",15);
+		asterix.boirePotion(5);
+		asterix.frapper(cactus);
+		
+		}
 
 }

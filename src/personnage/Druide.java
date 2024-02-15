@@ -1,7 +1,10 @@
 package personnage;
 
+import java.util.Random;
+
 public class Druide {
 	private String nom;
+	private int forcePotion = 1;
 	private int effetPotionMin;
 	private int effetPotionMax;
 
@@ -9,7 +12,7 @@ public class Druide {
 		this.nom = nom;
 		this.effetPotionMin = effetPotionMin;
 		this.effetPotionMax = effetPotionMax;
-		parler("Bonjour, je suis le druide " + nom + " et ma potion peut aller d'une force " + effetPotionMin + " ‡ "
+		parler("Bonjour, je suis le druide " + nom + " et ma potion peut aller d'une force " + effetPotionMin + " √† "
 				+ effetPotionMax + ".");
 	}
 
@@ -18,10 +21,44 @@ public class Druide {
 	}
 
 	public void parler(String texte) {
-		System.out.println(prendreParole() + "´ " + texte + "ª");
+		System.out.println(prendreParole() + "\" " + texte + " \"");
 	}
 
 	private String prendreParole() {
 		return "Le druide " + nom + " : ";
+	}
+
+	public void preparerPotion() {
+		Random random = new Random();
+		this.forcePotion = random.nextInt(this.effetPotionMin, this.effetPotionMax + 1);
+		if (this.forcePotion > 7) {
+			this.parler("J'ai prepare une super potion de force " + this.forcePotion);
+
+		} else {
+			this.parler(
+					"Je n'ai pas trouve tous les ingredients, ma potion est seulement de force " + this.forcePotion);
+
+		}
+
+	}
+
+	public void booster(Gaulois gaulois) {
+		if (gaulois.getNom() == "Ob√©lix") {
+			this.parler("Non, Ob√©lix !... Tu n'auras pas de potion magique !");
+
+		} else {
+			gaulois.boirePotion(forcePotion);
+		}
+	}
+
+	public static void main(String[] args) {
+		Druide panoramix = new Druide("Panoramix", 5, 10);
+		panoramix.preparerPotion();
+		Gaulois obelix = new Gaulois("Ob√©lix",50);
+		Gaulois a = new Gaulois("Asterix",10);
+		panoramix.booster(a);
+		panoramix.booster(obelix);
+				
+
 	}
 }
