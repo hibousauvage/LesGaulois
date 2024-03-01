@@ -20,4 +20,14 @@ public class Village {
 	public String getNom() {
 		return nom;
 	}
+	
+	public void ajouterHabitant(Gaulois gaulois) {
+		this.villageois[nbVillageois] = gaulois;
+		nbVillageois ++;
+		
+	}
+	
+	public Gaulois trouverHabitant(int numVillageois) {
+		return this.villageois[numVillageois];
+	}
 }
