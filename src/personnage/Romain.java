@@ -43,5 +43,7 @@ public class Romain {
 		anus.recevoirCoup(4);
 		anus.recevoirCoup(3);
 		anus.prendreParole();
+		System.out.println(Equipement.BOUCLIER);
+		System.out.println(Equipement.CASQUE);
 	}
 }

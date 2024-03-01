@@ -5,11 +5,10 @@ public class Village {
 	private Chef chef;
 	private Gaulois[] villageois;
 	private int nbVillageois = 0;
-	private int nbVillageoisMax;
 
 	public Village(String nom, int nbVillageoisMax) {
 		this.nom = nom;
-		this.nbVillageoisMax = nbVillageoisMax;
+
 		this.villageois = new Gaulois[nbVillageoisMax];
 	}
 
@@ -32,7 +31,7 @@ public class Village {
 	}
 
 	public void afficherVillageois() {
-		System.out.println("Dans le village du chef " + this.chef.getNom() + " vivent les légendaires gaulois :");
+		System.out.println("Dans le village du chef " + this.chef.getNom() + " vivent les lï¿½gendaires gaulois :");
 
 		for (int i = 0; i < this.nbVillageois; i++) {
 			System.out.println("- " + this.villageois[i].getNom());
@@ -41,18 +40,18 @@ public class Village {
 	}
 
 	public static void main(String[] args) {
-		Village village = new Village("Village des Irréductibles", 30);
+		Village village = new Village("Village des Irrï¿½ductibles", 30);
 //		Gaulois gaulois = village.trouverHabitant(30);
 //		exeption index out of bound -> les indice vont de 0 a 29
 		Chef abraracourcix = new Chef("Abraracourcix", 8, village);
 		village.setChef(abraracourcix);
 		Gaulois asterix = new Gaulois("Asterix", 8);
 		village.ajouterHabitant(asterix);
-		Gaulois obelix = new Gaulois("Obélix", 25);
+		Gaulois obelix = new Gaulois("Obï¿½lix", 25);
 		village.ajouterHabitant(obelix);
 //		Gaulois gaulois = village.trouverHabitant(1);
 //		System.out.println(gaulois);
-//		l'indice de astezrix est 0 malgrés le fait que ce soit le premier villageois, le reste du tableaux est compose de Gaulois null
+//		l'indice de astezrix est 0 malgrï¿½s le fait que ce soit le premier villageois, le reste du tableaux est compose de Gaulois null
 		village.afficherVillageois();
 	}
 }
