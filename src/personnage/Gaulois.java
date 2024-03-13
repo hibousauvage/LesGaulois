@@ -51,6 +51,19 @@ public class Gaulois {
 
 	}
 
+	public void faireUneDonnation(Musee musee) {
+		if (nbTrophees > 0) {
+			String equipementDonner = "";
+			for (int i = 0; i < nbTrophees; i++) {
+				musee.donnerTrophees(this, trophees[i]);
+				equipementDonner += "\n" + trophees[i];
+			}
+
+			parler("Je donnne au musee tous mes trophees :" + equipementDonner);
+
+		}
+	}
+
 	@Override
 	public String toString() {
 		return "Gaulois [nom=" + nom + ", force=" + force + ", effetPotion=" + effetPotion + "]";
